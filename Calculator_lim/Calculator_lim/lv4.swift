@@ -7,30 +7,29 @@
 
 import Foundation
 
-class AbstractOperation {
-    func perform(_ firstNumber: Int, _ secondNumber: Int) -> Int {
-        return 0
+class Calculator {
+    // 연산자 입력을 부호로 받기
+    private let operations: [String: AbstractOperation] = [
+        "+": AddOperation(),
+        "-": SubtractOperation(),
+        "*": MultiplyOperation(),
+        "/": DivideOperation(),
+        "%": RemainderOperation()
+    ]
+    
+    func calculate(_ operation: String, _ firstNumber: Int, _ secondNumber: Int) -> Int {
+        if let op = operations[operation] {
+            return op.perform(firstNumber, secondNumber)
+        } else {
+            print("오류: +, -, *, /, % 중에서 입력 가능합니다.")
+            return 0
+        }
     }
 }
 
-class Calculator {
-    // 연산자 부호로 입력 받기
-    func calculate(_ operation: String, _ firstNumber: Int, _ secondNumber: Int) -> Int {
-        switch operation {
-        case "+":
-            return AddOperation().perform(firstNumber, secondNumber)
-        case "-":
-            return SubtractOperation().perform(firstNumber, secondNumber)
-        case "*":
-            return MultiplyOperation().perform(firstNumber, secondNumber)
-        case "/":
-            return DivideOperation().perform(firstNumber, secondNumber)
-        case "%":
-            return RemainderOperation().perform(firstNumber, secondNumber)
-        default:
-            print("+, -, *, /, % 중에서 입력가능합니다")
-            return 0
-        }
+class AbstractOperation {
+    func perform(_ firstNumber: Int, _ secondNumber: Int) -> Int {
+        return 0
     }
 }
 //-> 각 연산에 AbstractOperation 을 상속
