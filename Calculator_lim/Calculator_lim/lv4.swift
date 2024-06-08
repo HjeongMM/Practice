@@ -14,23 +14,7 @@ class AbstractOperation {
 }
 
 class Calculator {
-    func add(_ firstNumber: Int, _ secondNumber: Int) -> Int {
-        return AddOperation().perform(firstNumber, secondNumber)
-    }
-    func subtract(_ firstNumber: Int, _ secondNumber: Int) -> Int {
-        return SubtractOperation().perform(firstNumber, secondNumber)
-    }
-    func multiply(_ firstNumber: Int, _ secondNumber: Int) -> Int {
-        return MultiplyOperation().perform(firstNumber, secondNumber)
-    }
-    func divide(_ firstNumber: Int, _ secondNumber: Int) -> Int {
-        return DivideOperation().perform(firstNumber, secondNumber)
-    }
-    func remain(_ firstNumber: Int, _ secondNumber: Int) -> Int {
-        return RemainderOperation().perform(firstNumber, secondNumber)
-    }
-    
-    // lv4 이외에 추가사항
+    // 연산자 부호로 입력 받기
     func calculate(_ operation: String, _ firstNumber: Int, _ secondNumber: Int) -> Int {
         switch operation {
         case "+":
