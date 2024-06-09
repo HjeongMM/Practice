@@ -7,6 +7,7 @@
 
 import Foundation
 
+let validOperations = ["+", "-", "*", "/", "%"]
 
 func main() {
     while true { // while을 사용해 하나의 연산이 끝난 후 다시 처음부터 입력받을 수 있게한다.
