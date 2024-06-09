@@ -7,16 +7,19 @@
 
 import Foundation
 
+class AbstractOperation {
+    func perform(_ firstNumber: Int, _ secondNumber: Int) -> Int {
+        fatalError("에러")
+    }
+}
+
 class Calculator {
-    // 연산자 입력을 부호로 받기
-    private let operations: [String: AbstractOperation] = [
-        "+": AddOperation(),
-        "-": SubtractOperation(),
-        "*": MultiplyOperation(),
-        "/": DivideOperation(),
-        "%": RemainderOperation()
-    ]
-    
+    private let operations: [String: AbstractOperation]
+
+    init(operations: [String: AbstractOperation]) {
+        self.operations = operations
+    }
+
     func calculate(_ operation: String, _ firstNumber: Int, _ secondNumber: Int) -> Int {
         if let op = operations[operation] {
             return op.perform(firstNumber, secondNumber)
@@ -27,28 +30,25 @@ class Calculator {
     }
 }
 
-class AbstractOperation {
-    func perform(_ firstNumber: Int, _ secondNumber: Int) -> Int {
-        return 0
-    }
-}
-//-> 각 연산에 AbstractOperation 을 상속
 class AddOperation: AbstractOperation {
     override func perform(_ firstNumber: Int, _ secondNumber: Int) -> Int {
         return firstNumber + secondNumber
     }
 }
-class SubtractOperation: AbstractOperation  {
+
+class SubtractOperation: AbstractOperation {
     override func perform(_ firstNumber: Int, _ secondNumber: Int) -> Int {
         return firstNumber - secondNumber
     }
 }
-class MultiplyOperation: AbstractOperation  {
+
+class MultiplyOperation: AbstractOperation {
     override func perform(_ firstNumber: Int, _ secondNumber: Int) -> Int {
         return firstNumber * secondNumber
     }
 }
-class DivideOperation: AbstractOperation  {
+
+class DivideOperation: AbstractOperation {
     override func perform(_ firstNumber: Int, _ secondNumber: Int) -> Int {
         guard secondNumber != 0 else {
             print("오류")
@@ -57,6 +57,7 @@ class DivideOperation: AbstractOperation  {
         return firstNumber / secondNumber
     }
 }
+
 class RemainderOperation: AbstractOperation {
     override func perform(_ firstNumber: Int, _ secondNumber: Int) -> Int {
         guard secondNumber != 0 else {
@@ -67,5 +68,13 @@ class RemainderOperation: AbstractOperation {
     }
 }
 
-let calculator = Calculator()
-let validOperations = ["+", "-", "*", "/", "%"]
+// 의존성 주입
+let operations: [String: AbstractOperation] = [
+    "+": AddOperation(),
+    "-": SubtractOperation(),
+    "*": MultiplyOperation(),
+    "/": DivideOperation(),
+    "%": RemainderOperation()
+]
+
+let calculator = Calculator(operations: operations)
