@@ -7,8 +7,6 @@
 
 import Foundation
 
-import Foundation
-
 class AbstractOperation {
     func perform(_ firstNumber: Int, _ secondNumber: Int) -> Int {
         fatalError("에러")
