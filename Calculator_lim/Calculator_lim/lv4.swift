@@ -7,6 +7,8 @@
 
 import Foundation
 
+import Foundation
+
 class AbstractOperation {
     func perform(_ firstNumber: Int, _ secondNumber: Int) -> Int {
         fatalError("에러")
@@ -24,7 +26,6 @@ class Calculator {
         if let op = operations[operation] {
             return op.perform(firstNumber, secondNumber)
         } else {
-            print("오류: +, -, *, /, % 중에서 입력 가능합니다.")
             return 0
         }
     }
