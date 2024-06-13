@@ -106,7 +106,6 @@ class BaseballGame: Game {
     private func countStrikesAndBalls(_ answer: [Int], _ input: [Int]) -> (Int, Int) {
         let strikes = zip(answer, input).filter { $0 == $1 }.count
         let balls = input.filter { answer.contains($0) }.count - strikes
-        print(strikes, balls)
         return (strikes, balls)
     }
 }
