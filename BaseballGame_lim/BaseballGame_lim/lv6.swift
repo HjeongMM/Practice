@@ -52,6 +52,16 @@ class BaseballGame: Game {
     func start() {
         while true {
             print("""
+                                                                       
+                                                                       
+                               ,d                               ,d
+                               88                               88
+                  ,adPPYba,  MM88MMM  ,adPPYYba,  8b,dPPYba,  MM88MMM
+                  I8[    ""    88     ""     `Y8  88P'   "Y8    88
+                   `"Y8ba,     88     ,adPPPPP88  88            88
+                  aa    ]8I    88,    88,    ,88  88            88,
+                  `"YbbdP"'    "Y888  `"8bbdP"Y8  88            "Y888
+                                                                     
                   환영합니다! 원하시는 번호를 입력해주세요
                   1. 게임 시작하기  2. 게임 기록 보기  3. 종료하기
                   """)
@@ -106,6 +116,7 @@ class BaseballGame: Game {
     private func countStrikesAndBalls(_ answer: [Int], _ input: [Int]) -> (Int, Int) {
         let strikes = zip(answer, input).filter { $0 == $1 }.count
         let balls = input.filter { answer.contains($0) }.count - strikes
+        print(strikes, balls)
         return (strikes, balls)
     }
 }
