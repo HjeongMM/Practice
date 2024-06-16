@@ -108,7 +108,7 @@ class BaseballGame: Game {
     }
     // 정답 생성
     private func generateAnswer() -> [Int] {
-        var number = Array(0...9).shuffled()
+        let number = Array(0...9).shuffled()
         return number[0] == 0 ? Array(number[1...3]) : Array(number[0...2])
     }
     // 스트라이크, 볼 카운터
