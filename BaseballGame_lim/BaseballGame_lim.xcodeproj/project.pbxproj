@@ -69,14 +69,14 @@
 		E55735182C1802A600D6F413 /* BaseballGame_lim */ = {
 			isa = PBXGroup;
 			children = (
-				E5602F8F2C1B7B3F00A704DD /* 1...5 */,
+				E5602F8F2C1B7B3F00A704DD /* 1to5 */,
 				E5602F8D2C1B6EFC00A704DD /* lv6.swift */,
 				E55735192C1802A600D6F413 /* main.swift */,
 			);
 			path = BaseballGame_lim;
 			sourceTree = "<group>";
 		};
-		E5602F8F2C1B7B3F00A704DD /* 1...5 */ = {
+		E5602F8F2C1B7B3F00A704DD /* 1to5 */ = {
 			isa = PBXGroup;
 			children = (
 				E52B037A2C1831DA00209EE8 /* lv1.swift */,
@@ -85,7 +85,7 @@
 				E5602F892C1B62A400A704DD /* lv4.swift */,
 				E5602F8B2C1B69DC00A704DD /* lv5.swift */,
 			);
-			path = 1...5;
+			path = 1to5;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
