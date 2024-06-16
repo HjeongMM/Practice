@@ -52,7 +52,7 @@ class BaseballGame: Game {
     func start() {
         while true {
             print("""
-                                                                       
+                                              
                                                                        
                                ,d                               ,d
                                88                               88
@@ -83,7 +83,7 @@ class BaseballGame: Game {
         let answer = generateAnswer()
         var trialCount = 0
         
-        print("0~9까지 수를 중복되지 않게 조합하여 세 자리 숫자를 맞추는 게임입니다. 세 자리 정수를 입력하세요.")
+        print("중복되지 않는 세 자리 숫자를 맞춰보세요. (0은 맨 앞자리에 올 수 없습니다)")
         while true {
             guard let input = readLine(), inputValidator.isValid(input: input) else { continue }
             
@@ -108,15 +108,13 @@ class BaseballGame: Game {
     }
     // 정답 생성
     private func generateAnswer() -> [Int] {
-        var number = Array(1...9).shuffled()
-        number.insert(0, at: 1)
-        return Array(number.prefix(3))
+        var number = Array(0...9).shuffled()
+        return number[0] == 0 ? Array(number[1...3]) : Array(number[0...2])
     }
     // 스트라이크, 볼 카운터
     private func countStrikesAndBalls(_ answer: [Int], _ input: [Int]) -> (Int, Int) {
         let strikes = zip(answer, input).filter { $0 == $1 }.count
         let balls = input.filter { answer.contains($0) }.count - strikes
-        print(strikes, balls)
         return (strikes, balls)
     }
 }
