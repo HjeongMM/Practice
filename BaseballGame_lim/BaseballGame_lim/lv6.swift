@@ -36,11 +36,11 @@ class RecordManager {
     }
 }
 
-protocol G23 {
+protocol G23q {
     func start()
 }
 
-class BaseballGame: G23 {
+class BaseballGame: G23q {
     private var recordManager: RecordManager
     private var inputValidator: InputValidator
     
