@@ -7,11 +7,11 @@
 
 import Foundation
 
-// 입력값 검사 
+// 입력값 검사 프로토콜
 protocol InputValidator {
     func isValid(input: String) -> Bool
 }
-
+// 입력값 검사 정의
 class DefaultInputValidator: InputValidator {
     func isValid(input: String) -> Bool {
         guard let _ = Int(input), input.first != "0", input.count == 3, Set(input).count == 3 else {
@@ -21,7 +21,7 @@ class DefaultInputValidator: InputValidator {
         return true
     }
 }
-
+// 게임 기록 생성
 class RecordManager {
     private var records: [Int] = []
     
@@ -35,12 +35,8 @@ class RecordManager {
         }
     }
 }
-
-protocol Game {
-    func start()
-}
-
-class BaseballGame: Game {
+// 게임 클래스 정의
+class BaseballGame {
     private var recordManager: RecordManager
     private var inputValidator: InputValidator
     
@@ -48,7 +44,7 @@ class BaseballGame: Game {
         self.recordManager = recordManager
         self.inputValidator = inputValidator
     }
-    
+
     func start() {
         while true {
             print("""
@@ -78,7 +74,7 @@ class BaseballGame: Game {
             }
         }
     }
-    // 답변 출력
+    // 게임 로직
     private func playGame() {
         let answer = generateAnswer()
         var trialCount = 0
